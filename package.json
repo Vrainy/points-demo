@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "generate-mock": "node scripts/generate-mock-data.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -15,6 +16,7 @@
     "@types/three": "^0.182.0",
     "antd": "^6.2.2",
     "comlink": "^4.4.2",
+    "lil-gui": "^0.21.0",
     "mitt": "^3.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.4",

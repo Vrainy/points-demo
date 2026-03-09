@@ -7,6 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Mock Data
+public/data/mock/*.bin
+public/data/mock/metadata.json
+
 node_modules
 dist
 dist-ssr

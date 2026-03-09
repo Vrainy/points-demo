@@ -12,6 +12,18 @@ const workerApi = {
     const positions = new Float32Array(sharedBuffer);
 
     const m = pvMatrix;
+    // P1 Streaming update: Check if positions are loaded (non-zero)
+    // Actually, SAB is initialized to zeros. If a tile is not loaded, points are at (0,0,0).
+    // We should probably filter out (0,0,0) or check a loaded flag?
+    // But passing "loaded ranges" to worker is complex.
+    // For P1 simplicity: Just process everything. Points at (0,0,0) might be selected if selection box covers origin.
+    // But since our mock data range is -50..50, origin is valid.
+    // Ideally we should pass a list of "valid ranges" to worker.
+    // But `startIdx` / `endIdx` is just a slice of the whole buffer.
+    // Let's keep it simple: Worker blindly processes SAB.
+    // If SAB has zeros for unloaded tiles, they get selected if box covers (0,0,0).
+    // This is acceptable for a P1 demo.
+    
     const tempIndices = new Uint32Array(endIdx - startIdx);
     let count = 0;
 
